@@ -4,15 +4,16 @@ in jQuery
 $('#spaceship)
 */
 $(document).ready(function(){
-
+    var hg = window.innerHeight;
+    var wd = window.innerWidth;
     var spaceship = $('#spaceship');
 
     //Changing css via jQuery
     spaceship.css({     //css function
         'position' : 'absolute',  // Which is static by default
-        'left' : 500,
-        'top': 200
-    })
+        'left' : `${wd/2}px`,
+        'top' : `${hg*80/100}px`
+    });
     
     //Now i want to change the spaceship position using my keys
     var ismovingRight = false;
@@ -22,7 +23,6 @@ $(document).ready(function(){
     //keydown event
     $(document).on("keydown", function(e){
         /*Cheaking keyCode */
-        console.log(e.keyCode)
        
        var kc = e.keyCode;
        if(kc == 39){
@@ -62,16 +62,25 @@ $(document).ready(function(){
     var speed = 5
     function move(){
         if(ismovingRight){
-            spaceship.css('left', (spaceship.position().left + speed))
+            if ((spaceship.position().left + 90)<=wd) {
+                spaceship.css('left', (spaceship.position().left + speed))
+            }
+            
         }
         if(ismovingDown){
-            spaceship.css('top', (spaceship.position().top + speed))
+            if ((spaceship.position().top + 90)<=hg) {
+                spaceship.css('top', (spaceship.position().top + speed))
+            }
         }
         if(ismovingUp){
-            spaceship.css('top', (spaceship.position().top  -speed))
+            if ((spaceship.position().top -10)>=0) {
+                spaceship.css('top', (spaceship.position().top - speed))
+            }
         }
         if(ismovingLeft){
-            spaceship.css('left', (spaceship.position().left - speed))
+            if ((spaceship.position().left -10)>=0) {
+                spaceship.css('left', (spaceship.position().left - speed))
+            }
         }
     }      
     
