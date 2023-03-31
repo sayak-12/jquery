@@ -28,6 +28,12 @@ $('.gt').text("<p>hello world</p>")
 // $('.gt').addClass("className");
 // $('.gt').removeClass("className");
 $('.gt').width();
-$('.gt').width("100px");
+$('.gt').width("100%");
 $("input").val("value");
 //$( "<p>This is a new paragraph</p>" ); =>  var x= document.createElement("p"); x.innerhtml = "<p>This is a new paragraph</p>";
+
+$( document ).ready(function(){
+    $( "input" ).on( "keydown focus", function(e) {
+        console.log( e );
+    });
+});
